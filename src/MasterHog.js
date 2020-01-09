@@ -21,6 +21,7 @@ export default class MasterHog extends Component {
 
 
   render() {
+    // console.log('inside MasterHog ',this.props.offspring)
     return (
       <div>
 
@@ -30,19 +31,17 @@ export default class MasterHog extends Component {
         Sun<br></br>
         <input type="radio" name="eyeColor" value="glowing" onChange={this.changeEyeColor} />
         Glowing<br></br>
-      
+
         <h2>Name: Master Blaster</h2>
         <h3>Weight: 2.54 Tons</h3>
         <h3>Eye Color: {this.state.eyeColor}</h3>
-        
+
         <div id="masters-domicile">
           <img id="master-blaster" src={Master} alt="" />
         </div>
-        
+
         <ul className="hoglist">
-          <BabyHog />
-          <BabyHog />
-          <BabyHog />
+          {this.props.offspring.map(hog => <BabyHog key={hog.id} eyeColor={this.state.eyeColor} hog={hog}/>)}
         </ul>
 
       </div>
